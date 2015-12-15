@@ -1,0 +1,75 @@
+- hosts: 127.0.0.1 
+  connection: local
+  sudo: true
+  vars:
+      username: "{{ lookup('env', 'USER') }}"
+  tasks:
+    - name: add php-7.0 repository 
+      apt_repository: repo='ppa:ondrej/php-7.0'
+
+    - name: apt update
+      apt: update_cache=yes
+
+    - name: apt install php7.0
+      apt: name={{ item }} 
+      with_items:
+        - php7.0
+        - php7.0-fpm
+        - php7.0-mysql
+        - php7.0-curl
+
+    - name: apt install git 
+      apt: name=git
+
+    - name: is composer already installed
+      shell: /usr/bin/test -f /usr/bin/composer 
+      register: check_composer
+      ignore_errors: True
+
+    - name: install composer
+      shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin
+      when: check_composer|failed
+
+    - name: move composer.phar to composer
+      file: src=/usr/bin/composer.phar dest=/usr/bin/composer state=link
+      when: check_composer|failed
+
+    - name: install nginx
+      apt: name=nginx
+
+    - name: copy nginx default_config 
+      template: src=templates/default.conf dest=/etc/nginx/conf.d/default.conf mode=0644
+
+    - name: copy nginx nginx_config 
+      template: src=templates/nginx.conf dest=/etc/nginx/nginx.conf mode=0644
+
+    - name: remove apache2
+      apt: name=apache2 state=absent
+
+    - name: ensure nginx start
+      service: name=nginx state=restarted enabled=yes
+
+    - name: ensure php7.0-fpm start
+      service: name=php7.0-fpm state=restarted enabled=yes
+
+    - name: change timezone to JST
+      command: echo "Asia/Tokyo" | sudo tee /etc/timezone
+
+    - name: change timezone reconfigure
+      command: dpkg-reconfigure --frontend noninteractive tzdata
+
+    - name: install mysql-server
+      apt: name={{ item }}
+      with_items:
+        - mysql-server
+        - python-mysqldb
+
+    - name: start and enable mysql
+      service: name=mysql state=started enabled=yes
+      sudo: yes
+    
+    - name: create application database
+      mysql_db: name=bench encoding=utf8 state=present
+    
+    - name: create application database user
+      mysql_user: name=bench password=bench host=localhost priv=bench.*:ALL state=present
