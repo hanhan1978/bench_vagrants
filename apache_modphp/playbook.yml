@@ -77,9 +77,12 @@
     - name: link env
       file: src=/vagrant/benchapp/.env.example dest=/vagrant/benchapp/.env state=link
 
-    - name: migration & seed 
+    - name: migration
       shell: >
-        cd /vagrant/benchapp
+        cd /vagrant/benchapp;
         php artisan migrate --force;
-        php artisan db:seed --force;
 
+    - name: seed 
+      shell: >
+        cd /vagrant/benchapp;
+        php artisan db:seed --force;
