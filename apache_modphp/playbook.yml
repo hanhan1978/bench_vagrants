@@ -7,14 +7,23 @@
     - name: add php-7.0 repository 
       apt_repository: repo='ppa:ondrej/php-7.0'
 
+    - name: add apache2 latest repository 
+      apt_repository: repo='ppa:ondrej/apache2'
+
     - name: apt update
       apt: update_cache=yes
 
     - name: install apache2 
       apt: name=apache2
 
+    - name: disable mpm_event 
+      command: a2dismod mpm_event 
+
     - name: enable rewrite
       command: a2enmod rewrite 
+
+    - name: enable prefork 
+      command: a2enmod mpm_prefork 
 
     - name: apt install php7.0
       apt: name={{ item }} 
