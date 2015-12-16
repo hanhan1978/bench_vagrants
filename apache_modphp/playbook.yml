@@ -7,11 +7,14 @@
     - name: add php-7.0 repository 
       apt_repository: repo='ppa:ondrej/php-7.0'
 
+    - name: apt update
+      apt: update_cache=yes
+
     - name: install apache2 
       apt: name=apache2
 
-    - name: apt update
-      apt: update_cache=yes
+    - name: enable rewrite
+      command: a2enmod rewrite 
 
     - name: apt install php7.0
       apt: name={{ item }} 
@@ -35,6 +38,9 @@
     - name: move composer.phar to composer
       file: src=/usr/bin/composer.phar dest=/usr/bin/composer state=link
       when: check_composer|failed
+
+    - name: copy apache2 default_config 
+      template: src=templates/000-default.conf dest=/etc/apache2/sites-available/000-default.conf mode=0644
 
     - name: ensure apache start
       service: name=apache2 state=restarted enabled=yes
@@ -60,3 +66,20 @@
     
     - name: create application database user
       mysql_user: name=bench password=bench host=localhost priv=bench.*:ALL state=present
+
+    - name: clone benchapp
+      git: repo=https://github.com/hanhan1978/benchapp.git
+           dest=/vagrant/benchapp version=master accept_hostkey=yes
+
+    - name: composer install
+      composer: command=install working_dir=/vagrant/benchapp
+
+    - name: link env
+      file: src=/vagrant/benchapp/.env.example dest=/vagrant/benchapp/.env state=link
+
+    - name: migration & seed 
+      shell: >
+        cd /vagrant/benchapp
+        php artisan migrate --force;
+        php artisan db:seed --force;
+
