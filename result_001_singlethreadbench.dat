@@ -1,0 +1,56 @@
+Nginx
+
+doing startup siege 20sec => 1 ......  done 
+doing startup siege 20sec => 2 ......  done 
+doing startup siege 20sec => 3 ......  done 
+Transactions    20420   hits
+Availability    100     %
+Elapsed time    59.98   secs
+Data transferred        1228.9975       MB
+Response time   0.045   secs
+Transaction rate        340.445 trans/sec
+Throughput      20.49   MB/sec
+Concurrency     14.97
+Successful transactions 20420
+Failed transactions     0
+Longest transaction     3.7425
+Shortest transaction    0
+
+
+Apache with nginx 
+
+doing startup siege 20sec => 1 ......  done
+doing startup siege 20sec => 2 ......  done
+doing startup siege 20sec => 3 ......  done
+Transactions    22161   hits
+Availability    100     %
+Elapsed time    59.98   secs
+Data transferred        1333.8725       MB
+Response time   0.04    secs
+Transaction rate        369.475 trans/sec
+Throughput      22.24   MB/sec
+Concurrency     14.965
+Successful transactions 22161
+Failed transactions     0
+Longest transaction     3.23
+Shortest transaction    0
+
+
+Apache mod_php
+
+doing startup siege 20sec => 1 ......  done
+doing startup siege 20sec => 2 ......  done
+doing startup siege 20sec => 3 ......  done
+Transactions    21055.25        hits
+Availability    100     %
+Elapsed time    59.98   secs
+Data transferred        1193.9525       MB
+Response time   0.04    secs
+Transaction rate        351.0375        trans/sec
+Throughput      19.9075 MB/sec
+Concurrency     14.9025
+Successful transactions 21055.25
+Failed transactions     0
+Longest transaction     5.4475
+Shortest transaction    0
+

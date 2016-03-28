@@ -1,0 +1,115 @@
+
+Apache mod_php with nginx
+
+Transactions    2000    hits
+Availability    100     %
+Elapsed time    28.71   secs
+Data transferred        119.04  MB
+Response time   0.0125  secs
+Transaction rate        69.7075 trans/sec
+Throughput      4.1475  MB/sec
+Concurrency     0.895
+Successful transactions 2000
+Failed transactions     0
+Longest transaction     0.66
+Shortest transaction    0
+
+Transactions:                   9802 hits
+Availability:                  98.02 %
+Elapsed time:                  42.18 secs
+Data transferred:             591.26 MB
+Response time:                  0.34 secs
+Transaction rate:             232.39 trans/sec
+Throughput:                    14.02 MB/sec
+Concurrency:                   79.15
+Successful transactions:        9802
+Failed transactions:             198
+Longest transaction:            7.08
+Shortest transaction:           0.00
+
+
+Nginx php-fpm
+
+Transactions    2000    hits
+Availability    100     %
+Elapsed time    26.915  secs
+Data transferred        119.04  MB
+Response time   0.01    secs
+Transaction rate        74.5225 trans/sec
+Throughput      4.435   MB/sec
+Concurrency     0.69
+Successful transactions 2000
+Failed transactions     0
+Longest transaction     0.3275
+Shortest transaction    0
+
+Transactions:                   9858 hits
+Availability:                  98.58 %
+Elapsed time:                  37.14 secs
+Data transferred:             592.28 MB
+Response time:                  0.23 secs
+Transaction rate:             265.43 trans/sec
+Throughput:                    15.95 MB/sec
+Concurrency:                   61.10
+Successful transactions:        9858
+Failed transactions:             142
+Longest transaction:            5.31
+Shortest transaction:           0.00
+
+
+Apache mod_php
+
+Transactions    2000    hits
+Availability    100     %
+Elapsed time    27.94   secs
+Data transferred        111.19  MB
+Response time   0.01    secs
+Transaction rate        71.73   trans/sec
+Throughput      3.9875  MB/sec
+Concurrency     0.92
+Successful transactions 2000
+Failed transactions     0
+Longest transaction     0.3975
+Shortest transaction    0
+
+Transactions:                   9466 hits
+Availability:                  94.66 %
+Elapsed time:                 221.93 secs
+Data transferred:             563.09 MB
+Response time:                  4.08 secs
+Transaction rate:              42.65 trans/sec
+Throughput:                     2.54 MB/sec
+Concurrency:                  174.18
+Successful transactions:        9466
+Failed transactions:             534
+Longest transaction:          173.24
+Shortest transaction:           0.00
+
+
+Apache Fast-CGI
+
+Transactions    2000    hits
+Availability    100     %
+Elapsed time    28.37   secs
+Data transferred        111.19  MB
+Response time   0.01    secs
+Transaction rate        70.5625 trans/sec
+Throughput      3.925   MB/sec
+Concurrency     0.89
+Successful transactions 2000
+Failed transactions     0
+Longest transaction     0.5425
+Shortest transaction    0
+
+Transactions:                  10000 hits
+Availability:                 100.00 %
+Elapsed time:                  56.53 secs
+Data transferred:             555.97 MB
+Response time:                  0.74 secs
+Transaction rate:             176.90 trans/sec
+Throughput:                     9.84 MB/sec
+Concurrency:                  130.16
+Successful transactions:       10000
+Failed transactions:               0
+Longest transaction:            8.98
+Shortest transaction:           0.00

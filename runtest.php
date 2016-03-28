@@ -10,7 +10,7 @@ for($i = 0; $i < 4; $i++){
 $avg = calcAverage($res);
 display($avg);
 
-function startup_siege($sec = 20, $loop = 3, $interval = 15){
+function startup_siege($sec = 20, $loop = 2, $interval = 15){
   for($i=0;$i<$loop;$i++){
     echo "doing startup siege ${sec}sec => ".($i + 1)." ...... ";
     $cmd='siege -q -b -t'.$sec.'s -f urls.txt 2>&1';
@@ -20,8 +20,8 @@ function startup_siege($sec = 20, $loop = 3, $interval = 15){
   }
 }
 
-function get_siege_result($sec = 60){
-    $cmd='siege -q -b -t'.$sec.'s -f urls.txt 2>&1';
+function get_siege_result($sec = 40){
+    $cmd='siege -q -c50 -r'.$sec.'s -f urls.txt 2>&1';
 
     $result='';
     exec($cmd, $result);
