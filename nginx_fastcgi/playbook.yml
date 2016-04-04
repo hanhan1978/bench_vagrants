@@ -5,7 +5,7 @@
       username: "{{ lookup('env', 'USER') }}"
   tasks:
     - name: add php-7.0 repository 
-      apt_repository: repo='ppa:ondrej/php-7.0'
+      apt_repository: repo='ppa:ondrej/php'
 
     - name: apt update
       apt: update_cache=yes
@@ -17,6 +17,8 @@
         - php7.0-fpm
         - php7.0-mysql
         - php7.0-curl
+        - php7.0-mbstring
+        - php7.0-xml
 
     - name: apt install git 
       apt: name=git
