@@ -70,3 +70,40 @@ Longest transaction:           11.83
 Shortest transaction:           0.00
 ```
 
+# Apache FastCGI 
+
+## CPU 2, Memory 2048MB
+
+
+```
+Transactions:                  18300 hits
+Availability:                 100.00 %
+Elapsed time:                  51.28 secs
+Data transferred:            1037.43 MB
+Response time:                  0.76 secs
+Transaction rate:             356.86 trans/sec
+Throughput:                    20.23 MB/sec
+Concurrency:                  272.85
+Successful transactions:       18300
+Failed transactions:               0
+Longest transaction:           13.23
+Shortest transaction:           0.00
+
+
+
+
+Transactions:                  19500 hits
+Availability:                 100.00 %
+Elapsed time:                  54.57 secs
+Data transferred:            1105.46 MB
+Response time:                  0.85 secs
+Transaction rate:             357.34 trans/sec
+Throughput:                    20.26 MB/sec
+Concurrency:                  305.23
+Successful transactions:       19500
+Failed transactions:               0
+Longest transaction:           24.91
+Shortest transaction:           0.00
+```
+
+Apache以外は設定変更
