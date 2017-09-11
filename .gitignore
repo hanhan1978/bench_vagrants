@@ -1,3 +1,4 @@
 benchapp
 .vagrant
 playbook.retry
+*-cloudimg-console.log

@@ -1,17 +1,15 @@
 {
-     "listeners": {
-         "*:8300": {
-             "application": "blogs"
-         }
-     },
-     "applications": {
-         "blogs": {
-             "type": "php",
-              "workers": 20,
-              "user": "nginx",
-              "group": "nginx",
-              "root": "/vagrant/benchapp/public",
-              "index": "index.php"
-         }
-     }
+        "listeners": {
+                "*:8300": {
+                        "application": "laravel"
+                }
+        },
+        "applications": {
+                "laravel": {
+                        "type": "php",
+                        "workers": 20,
+                        "root": "/vagrant/benchapp/public",
+                        "index": "index.php"
+                }
+        }
 }
